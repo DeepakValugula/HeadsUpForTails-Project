@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="registration.css">
+  <title>Registration Form</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Registration Form</h2>
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="first-name">First Name</label>
+                <input type="text" id="first-name" name="first-name" required>
+            </div>
+            <div class="form-group">
+                <label for="last-name">Last Name</label>
+                <input type="text" id="last-name" name="last-name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <button type="submit" class="btn"><a href="\index.html">Register</a></button>
+        </form>
+    </div>
+
+    <script>
+        // Get the form element
+        const form = document.getElementById("registrationForm");
+
+        // Add a submit event listener to the form
+        form.addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent the form from submitting normally
+
+            // Get the input values
+            const firstName = document.getElementById("first-name").value;
+            const lastName = document.getElementById("last-name").value;
+            const email = document.getElementById("email").value;
+
+            // Create an object to store the user's information
+            const user = {
+                firstName: firstName,
+                lastName: lastName,
+                email: email
+            };
+
+            // Convert the object to a JSON string
+            const userJSON = JSON.stringify(user);
+
+            // Store the JSON string in local storage
+            localStorage.setItem("user", userJSON);
+
+            // Optionally, you can display a confirmation message to the user
+            alert("Registration successful! Your information has been stored.");
+
+            // Clear the form fields
+            form.reset();
+        });
+    </script>
+</body>
+</html>
